@@ -1,4 +1,4 @@
-module github.com/xuender/ramdago
+module github.com/xuender/rg
 
 go 1.23
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/xuender/ramdago/relation"
+	"github.com/xuender/rg/relation"
 )
 
 func ExampleEqBy() {

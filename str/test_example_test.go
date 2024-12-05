@@ -3,7 +3,7 @@ package str_test
 import (
 	"fmt"
 
-	"github.com/xuender/ramdago/str"
+	"github.com/xuender/rg/str"
 )
 
 func ExampleTest() {

@@ -3,7 +3,7 @@ package relation_test
 import (
 	"fmt"
 
-	"github.com/xuender/ramdago/relation"
+	"github.com/xuender/rg/relation"
 )
 
 func ExampleLte() {

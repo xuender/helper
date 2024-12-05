@@ -3,7 +3,7 @@ package logic_test
 import (
 	"fmt"
 
-	"github.com/xuender/ramdago/logic"
+	"github.com/xuender/rg/logic"
 )
 
 func ExampleEither() {

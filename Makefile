@@ -1,7 +1,3 @@
-PACKAGE = github.com/xuender/ramdago
-VERSION = $(shell git describe --tags)
-BUILD_TIME = $(shell date +%F' '%T)
-
 default: lint-fix test
 
 tools:
@@ -22,12 +18,3 @@ watch-test:
 
 clean:
 	rm -rf dist
-
-proto:
-	protoc --go_out=. pb/*.proto
-
-build:
-	CGO_ENABLED=0 go build \
-	-ldflags "-X 'github.com/xuender/kit/oss.Version=${VERSION}' \
-  -X 'github.com/xuender/kit/oss.BuildTime=${BUILD_TIME}'" \
-  -o dist/ramdago main.go

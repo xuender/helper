@@ -3,7 +3,7 @@ package math_test
 import (
 	"fmt"
 
-	"github.com/xuender/ramdago/math"
+	"github.com/xuender/rg/math"
 )
 
 func ExampleAdd() {

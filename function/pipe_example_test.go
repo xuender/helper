@@ -3,8 +3,8 @@ package function_test
 import (
 	"fmt"
 
-	"github.com/xuender/ramdago/function"
-	"github.com/xuender/ramdago/math"
+	"github.com/xuender/rg/function"
+	"github.com/xuender/rg/math"
 )
 
 func ExamplePipe() {

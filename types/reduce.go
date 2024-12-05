@@ -7,4 +7,4 @@ type Reducer[T any] func(val1, val2 T) T
 type ReducerSlice[T any] func(items []T) T
 
 // ReducerCurry defines a function type that curries an item into a Mapper.
-type ReducerCurry[T any] func(item T) Mapper[T]
+type ReducerCurry[T any] func(item T) Mapper[T, T]

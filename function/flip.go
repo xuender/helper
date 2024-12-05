@@ -12,8 +12,8 @@ func FlipCheck[T any](yield func(T) types.Checker[T]) func(T) types.Checker[T] {
 }
 
 // FlipMap reverses the order of arguments for a map function.
-func FlipMap[T any](yield func(T) types.Mapper[T]) func(T) types.Mapper[T] {
-	return func(base T) types.Mapper[T] {
+func FlipMap[T any](yield func(T) types.Mapper[T, T]) func(T) types.Mapper[T, T] {
+	return func(base T) types.Mapper[T, T] {
 		return func(val T) T {
 			return yield(val)(base)
 		}

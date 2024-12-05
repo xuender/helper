@@ -2,11 +2,12 @@
 
 [![Action][action-svg]][action-url]
 [![Report Card][goreport-svg]][goreport-url]
+[![codecov][codecov-svg]][codecov-url]
 [![Lines of code][lines-svg]][lines-url]
 [![godoc][godoc-svg]][godoc-url]
 [![License][license-svg]][license-url]
 
-✨ **`xuender/rg` is a ...**
+✨ **`xuender/rg` is functional ramda (https://ramdajs.com) methods implement in Go.**
 
 ## 🚀 Install
 
@@ -31,6 +32,9 @@ go install github.com/xuender/rg@latest
 
 [goreport-url]: https://goreportcard.com/report/github.com/xuender/rg
 [goreport-svg]: https://goreportcard.com/badge/github.com/xuender/rg
+
+[codecov-url]: https://codecov.io/gh/xuender/rg
+[codecov-svg]: https://codecov.io/gh/xuender/rg/graph/badge.svg?token=JCGCZVYA0L
 
 [godoc-url]: https://godoc.org/github.com/xuender/rg
 [godoc-svg]: https://godoc.org/github.com/xuender/rg?status.svg

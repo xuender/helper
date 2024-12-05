@@ -7,8 +7,8 @@ import (
 	"github.com/xuender/rg/math"
 )
 
-func ExamplePipe() {
-	work := function.Pipe(
+func ExampleCompose() {
+	work := function.Compose(
 		math.Add(2),
 		math.Multiply(3),
 	)
@@ -16,5 +16,5 @@ func ExamplePipe() {
 	fmt.Println(work(1))
 
 	// Output:
-	// 9
+	// 5
 }

@@ -1,10 +1,14 @@
 package math
 
-import "cmp"
+import (
+	"cmp"
+
+	"github.com/xuender/rg/types"
+)
 
 // Add returns a function that adds the input value to the given base value.
 // The type parameter T must implement the cmp.Ordered interface.
-func Add[T cmp.Ordered](base T) func(T) T {
+func Add[T cmp.Ordered](base T) types.Mapper[T] {
 	return func(val T) T {
 		return base + val
 	}

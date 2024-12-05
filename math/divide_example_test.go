@@ -12,10 +12,3 @@ func ExampleDivide() {
 	// Output:
 	// 0.71
 }
-
-func ExampleDivideReverse() {
-	fmt.Println(math.DivideReverse(100.0)(71))
-
-	// Output:
-	// 0.71
-}

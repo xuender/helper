@@ -1,4 +1,4 @@
-module github.com/xuender/rg
+module github.com/xuender/helper
 
 go 1.23
 

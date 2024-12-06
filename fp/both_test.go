@@ -1,13 +1,13 @@
-package helper_test
+package fp_test
 
 import (
 	"testing"
 
-	"github.com/xuender/helper"
+	"github.com/xuender/helper/fp"
 )
 
 func BenchmarkBoth(b *testing.B) {
-	leapYear := helper.Both(
+	leapYear := fp.Both(
 		func(year int) bool { return year%4 == 0 },
 		func(year int) bool { return year%100 != 0 },
 	)
@@ -20,7 +20,7 @@ func BenchmarkBoth(b *testing.B) {
 }
 
 func BenchmarkBothOne(b *testing.B) {
-	leapYear := helper.Both(
+	leapYear := fp.Both(
 		func(year int) bool { return year%4 == 0 && year%100 != 0 },
 	)
 

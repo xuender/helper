@@ -1,13 +1,13 @@
-package helper_test
+package fp_test
 
 import (
 	"fmt"
 
-	"github.com/xuender/helper"
+	"github.com/xuender/helper/fp"
 )
 
 func ExamplePipe() {
-	work := helper.Pipe(
+	work := fp.Pipe(
 		func(a int) int { return a + 2 },
 		func(a int) int { return a * 3 },
 	)

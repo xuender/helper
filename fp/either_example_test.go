@@ -1,13 +1,13 @@
-package helper_test
+package fp_test
 
 import (
 	"fmt"
 
-	"github.com/xuender/helper"
+	"github.com/xuender/helper/fp"
 )
 
 func ExampleEither() {
-	check := helper.Either(
+	check := fp.Either(
 		func(val int) bool { return val > 10 },
 		func(val int) bool { return val%2 == 0 },
 	)

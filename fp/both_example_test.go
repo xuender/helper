@@ -1,13 +1,13 @@
-package helper_test
+package fp_test
 
 import (
 	"fmt"
 
-	"github.com/xuender/helper"
+	"github.com/xuender/helper/fp"
 )
 
 func ExampleBoth() {
-	leapYear := helper.Both(
+	leapYear := fp.Both(
 		func(year int) bool { return year%4 == 0 },
 		func(year int) bool { return year%100 != 0 },
 	)

@@ -1,4 +1,4 @@
-package helper
+package fp
 
 import "github.com/xuender/helper/types"
 

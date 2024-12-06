@@ -7,10 +7,11 @@ import (
 )
 
 func ExampleReduce() {
-	adder := slice.Reduce(func(val1, val2 int) int {
+	sum := slice.Reduce([]int{1, 2, 3, 4}, func(val1, val2 int) int {
 		return val1 + val2
 	})
-	fmt.Println(adder([]int{1, 2, 3, 4}))
+
+	fmt.Println(sum)
 
 	// Output:
 	// 10

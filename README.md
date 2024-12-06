@@ -9,12 +9,11 @@
 
 ✨ **`xuender/helper` is helpers methods for Golang.**
 
-## 🚀 Use
+## 🚀 Install
 
 ```shell
 go get github.com/xuender/helper@latest
 ```
-
 
 ## 💡 Usage
 

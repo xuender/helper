@@ -19,7 +19,7 @@ func NewSet[V comparable](elems ...V) Set[V] {
 // Add adds the specified elements to the set.
 func (p Set[V]) Add(elems ...V) Set[V] {
 	for _, elem := range elems {
-		p[elem] = _none
+		p[elem] = StructNone
 	}
 
 	return p
@@ -29,7 +29,7 @@ func (p Set[V]) Add(elems ...V) Set[V] {
 func (p Set[V]) AddSet(set ...Set[V]) Set[V] {
 	for _, set := range set {
 		for elem := range set {
-			p[elem] = _none
+			p[elem] = StructNone
 		}
 	}
 

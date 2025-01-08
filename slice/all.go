@@ -2,8 +2,8 @@ package slice
 
 import "github.com/xuender/helper/types"
 
-func All[T any](items []T, chekders ...types.Checker[T]) bool {
-	for _, checker := range chekders {
+func All[S ~[]T, T any](items S, checkers ...types.Checker[T]) bool {
+	for _, checker := range checkers {
 		for _, item := range items {
 			if !checker(item) {
 				return false

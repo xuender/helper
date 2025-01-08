@@ -2,7 +2,9 @@ package slice
 
 import "github.com/xuender/helper/types"
 
-func All[S ~[]T, T any](items S, checkers ...types.Checker[T]) bool {
+// All returns true if all elements in the slice satisfy every provided checker function.
+// It returns false if any element fails to satisfy any of the checkers.
+func All[S ~[]E, E any](items S, checkers ...types.Checker[E]) bool {
 	for _, checker := range checkers {
 		for _, item := range items {
 			if !checker(item) {

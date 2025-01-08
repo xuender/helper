@@ -2,6 +2,8 @@ package slice
 
 import "cmp"
 
+// Max returns the maximum value from a slice of ordered elements.
+// If the slice is empty, it returns the zero value of the element type.
 func Max[T cmp.Ordered](items []T) T {
 	var maxVal T
 

@@ -2,8 +2,10 @@ package slice
 
 import "cmp"
 
-func Min[T cmp.Ordered](items []T) T {
-	var minVal T
+// Min returns the minimum value from a slice of ordered elements.
+// If the slice is empty, it returns the zero value of the element type.
+func Min[S ~[]E, E cmp.Ordered](items S) E {
+	var minVal E
 
 	if len(items) == 0 {
 		return minVal

@@ -4,7 +4,6 @@ package ops_test
 import (
 	"fmt"
 	"io"
-	"os"
 
 	"github.com/xuender/helper/ops"
 )
@@ -30,15 +29,13 @@ func callError() (res error) {
 		res = err
 	})
 
-	panic(os.ErrExist)
+	panic(io.EOF)
 }
 
 func callNoRecover() (res error) {
 	defer ops.Recover(func(err error) {
 		res = err
 	})
-
-	res = io.EOF
 
 	return
 }
@@ -50,8 +47,8 @@ func ExampleRecover() {
 	fmt.Println(callNum())
 
 	// Output:
-	// EOF
+	// <nil>
 	// str
-	// file already exists
+	// EOF
 	// 3
 }

@@ -1,4 +1,4 @@
-package slice
+package cont
 
 import (
 	"github.com/xuender/helper/types"

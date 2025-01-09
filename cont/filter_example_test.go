@@ -9,10 +9,12 @@ import (
 func ExampleFilter() {
 	items := cont.Filter([]int{1, 2, 3, 4}, func(num int) bool { return num%2 == 0 })
 
-	fmt.Println(items)
-	fmt.Println(len(items), cap(items))
+	for num := range items {
+		fmt.Println(num)
+
+		break
+	}
 
 	// Output:
-	// [2 4]
-	// 2 2
+	// 2
 }

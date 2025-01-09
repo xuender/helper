@@ -1,6 +1,8 @@
 package cont
 
-import "github.com/xuender/helper/types"
+import (
+	"github.com/xuender/helper/types"
+)
 
 // Contains checks if a slice contains an element based on a custom equality function.
 // It returns true if the specified item is found in the slice.

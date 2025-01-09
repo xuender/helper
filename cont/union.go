@@ -1,54 +1,61 @@
 package cont
 
 import (
+	"iter"
 	"slices"
 
 	"github.com/xuender/helper/types"
 )
 
-// Union returns a slice containing all unique elements from the provided slices.
-func Union[S ~[]E, E comparable](items ...S) S {
-	if len(items) == 0 {
-		return nil
-	}
+// Union returns a sequence that contains the union of multiple slices.
+// It eliminates duplicate elements using a set, ensuring each element appears only once.
+func Union[S ~[]E, E comparable](items ...S) iter.Seq[E] {
+	return func(yield func(E) bool) {
+		if len(items) == 0 {
+			return
+		}
 
-	set := NewSet[E]()
-	union := []E{}
+		set := NewSet[E]()
 
-	for _, slice := range items {
-		for _, item := range slice {
-			if set.Has(item) {
-				continue
+		for _, slice := range items {
+			for _, item := range slice {
+				if set.Has(item) {
+					continue
+				}
+
+				set.Add(item)
+
+				if !yield(item) {
+					return
+				}
 			}
-
-			set.Add(item)
-			union = append(union, item)
 		}
 	}
-
-	return union
 }
 
-// UnionFunc computes the union of multiple slices using a custom equality function.
-// It returns a new slice containing unique elements from all input slices based on the provided comparator.
-func UnionFunc[S ~[]E, E any](equal types.Equaler[E], items ...S) S {
-	if len(items) == 0 {
-		return nil
-	}
+// UnionFunc returns a sequence that contains the union of multiple slices using a custom equality function.
+func UnionFunc[S ~[]E, E any](equal types.Equaler[E], items ...S) iter.Seq[E] {
+	return func(yield func(E) bool) {
+		if len(items) == 0 {
+			return
+		}
 
-	union := []E{}
+		union := []E{}
 
-	for _, slice := range items {
-		for _, item := range slice {
-			if slices.ContainsFunc(union, func(val E) bool {
-				return equal(val, item)
-			}) {
-				continue
+		for _, slice := range items {
+			for _, item := range slice {
+				if slices.ContainsFunc(union, func(val E) bool {
+					return equal(val, item)
+				}) {
+					continue
+				}
+
+				union = append(union, item)
+
+				if !yield(item) {
+					return
+				}
 			}
-
-			union = append(union, item)
 		}
 	}
-
-	return union
 }

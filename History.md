@@ -1,4 +1,13 @@
 
+1.0.2 / 2025-01-09
+==================
+
+* refactor: cont.Difference
+* feat: add cont.Fill
+* test: cont.Contains
+* feat: cont add Difference
+* feat: cont add UnionFunc
+
 1.0.1 / 2025-01-08
 ==================
 

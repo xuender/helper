@@ -1,6 +1,10 @@
 package cont
 
-import "slices"
+import (
+	"slices"
+
+	"github.com/xuender/helper/types"
+)
 
 // Union returns a slice containing all unique elements from the provided slices.
 func Union[S ~[]E, E comparable](items ...S) S {
@@ -27,7 +31,7 @@ func Union[S ~[]E, E comparable](items ...S) S {
 
 // UnionFunc computes the union of multiple slices using a custom equality function.
 // It returns a new slice containing unique elements from all input slices based on the provided comparator.
-func UnionFunc[S ~[]E, E any](equal func(E, E) bool, items ...S) S {
+func UnionFunc[S ~[]E, E any](equal types.Equaler[E], items ...S) S {
 	if len(items) == 0 {
 		return nil
 	}

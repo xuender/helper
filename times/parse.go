@@ -11,7 +11,7 @@ var ErrFormat = errors.New("time format error")
 func NewParse() func(string) (time.Time, error) {
 	layouts := map[int][]string{}
 
-	for _, layout := range [...]string{
+	for _, layout := range []string{
 		time.DateTime,
 		time.DateOnly,
 		"0102",

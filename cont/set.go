@@ -58,3 +58,7 @@ func (p Set[V]) Slice() []V {
 func (p Set[V]) Values() iter.Seq[V] {
 	return maps.Keys(p)
 }
+
+func (p Set[V]) Equal(other Set[V]) bool {
+	return maps.Equal(p, other)
+}

@@ -10,10 +10,12 @@ var ErrFormat = errors.New("time format error")
 // NewParse returns a function that attempts to parse a string into a time.Time.
 func NewParse() func(string) (time.Time, error) {
 	layouts := map[int][]string{}
+	defaultLayout := time.DateTime
 
 	for _, layout := range []string{
 		time.DateTime,
 		time.DateOnly,
+		time.TimeOnly,
 		"0102",
 		"2006",
 		"20060102",
@@ -42,16 +44,24 @@ func NewParse() func(string) (time.Time, error) {
 		time.StampMilli,
 		time.StampMicro,
 		time.StampNano,
-		time.TimeOnly,
 	} {
 		length := len(layout)
 		layouts[length] = append(layouts[length], layout)
 	}
 
 	return func(str string) (time.Time, error) {
-		if items, has := layouts[len(str)]; has {
+		length := len(str)
+		if length == len(defaultLayout) {
+			if val, err := time.Parse(defaultLayout, str); err == nil {
+				return val, nil
+			}
+		}
+
+		if items, has := layouts[length]; has {
 			for _, layout := range items {
 				if val, err := time.Parse(layout, str); err == nil {
+					defaultLayout = layout
+
 					return val, nil
 				}
 			}

@@ -14,6 +14,7 @@ func ExampleNewParse() {
 	fmt.Println(ops.Must(parse("20210104")).Day())
 	fmt.Println(ops.Must(parse("2024-01-01T16:14:13+08:00")).Minute())
 	fmt.Println(ops.Must(parse("0103")).Day())
+	fmt.Println(ops.Must(parse("0203")).Month())
 	fmt.Println(ops.Must(parse("2025")).Year())
 
 	_, err := parse("abcd")
@@ -24,6 +25,7 @@ func ExampleNewParse() {
 	// 4
 	// 14
 	// 3
+	// February
 	// 2025
 	// time format error
 }

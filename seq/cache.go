@@ -8,11 +8,11 @@ func Cache[T any](input iter.Seq[T], size int) iter.Seq[T] {
 	cache := make(chan T, size)
 
 	go func() {
+		defer func() { _ = recover() }()
+
 		for item := range input {
 			cache <- item
 		}
-
-		defer func() { _ = recover() }()
 
 		close(cache)
 	}()

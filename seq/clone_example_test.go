@@ -30,7 +30,7 @@ func ExampleClone() {
 
 	group.Wait()
 
-	fmt.Println(len(set1) == len(set2))
+	fmt.Println(set1.Equal(set2))
 
 	// Output:
 	// true

@@ -23,8 +23,12 @@ func ExampleRange2_zero() {
 }
 
 func ExampleRange_one() {
-	for num := range seq.Range(3) {
+	for num := range seq.Range(10) {
 		fmt.Println(num)
+
+		if num > 1 {
+			break
+		}
 	}
 
 	// Output:
@@ -33,15 +37,26 @@ func ExampleRange_one() {
 	// 2
 }
 
+func ExampleRange_one_zero() {
+	for num := range seq.Range(0) {
+		fmt.Println(num)
+	}
+
+	// Output:
+}
+
 func ExampleRange2_one() {
 	for key, val := range seq.Range2(3) {
 		fmt.Println(key, val)
+
+		if key > 0 {
+			break
+		}
 	}
 
 	// Output:
 	// 0 0
 	// 1 1
-	// 2 2
 }
 
 func ExampleRange_oneNegative() {

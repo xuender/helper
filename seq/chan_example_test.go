@@ -9,8 +9,11 @@ import (
 // ExampleChan is an example function.
 func ExampleChan() {
 	cha := make(chan int, 3)
+
 	cha <- 1
+
 	cha <- 2
+
 	cha <- 3
 
 	close(cha)

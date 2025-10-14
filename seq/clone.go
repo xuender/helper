@@ -12,6 +12,7 @@ func Clone[T any](input iter.Seq[T]) (iter.Seq[T], iter.Seq[T]) {
 	go func() {
 		for item := range input {
 			chan1 <- item
+
 			chan2 <- item
 		}
 

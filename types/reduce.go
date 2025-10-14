@@ -1,3 +1,4 @@
+// nolint: revive
 package types
 
 // Reducer defines a function type that reduces two values to one.

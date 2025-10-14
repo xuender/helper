@@ -16,13 +16,8 @@ func NewParse() func(string) (time.Time, error) {
 		time.DateTime,
 		time.DateOnly,
 		time.TimeOnly,
-		"0102",
-		"2006",
-		"20060102",
-		"060102",
-		"6-01-02",
-		"06-01-02",
-		"060102150405",
+		"0102", "2006", "20060102", "060102",
+		"6-01-02", "06-01-02", "060102150405",
 		"060102 150405",
 		"20060102150405",
 		"20060102 150405",
@@ -52,14 +47,16 @@ func NewParse() func(string) (time.Time, error) {
 	return func(str string) (time.Time, error) {
 		length := len(str)
 		if length == len(defaultLayout) {
-			if val, err := time.Parse(defaultLayout, str); err == nil {
+			val, err := time.Parse(defaultLayout, str)
+			if err == nil {
 				return val, nil
 			}
 		}
 
 		if items, has := layouts[length]; has {
 			for _, layout := range items {
-				if val, err := time.Parse(layout, str); err == nil {
+				val, err := time.Parse(layout, str)
+				if err == nil {
 					defaultLayout = layout
 
 					return val, nil

@@ -51,7 +51,7 @@ func Talmud[N types.Number](total N, debts []N) []N {
 	repays := make([]N, length)
 
 	if total <= sortedDebts[0].debt/2*N(length) {
-		return negative(isNegative, repayEach(total, length, repays))
+		return applySign(isNegative, repayEach(total, length, repays))
 	}
 
 	for index := range length - 1 {
@@ -66,7 +66,7 @@ func Talmud[N types.Number](total N, debts []N) []N {
 
 	repays[sortedDebts[length-1].index] = total
 
-	return negative(isNegative, repays)
+	return applySign(isNegative, repays)
 }
 
 func repayEach[N types.Number](total N, length int, repays []N) []N {
@@ -79,7 +79,7 @@ func repayEach[N types.Number](total N, length int, repays []N) []N {
 	return repays
 }
 
-func negative[N types.Number](isNegative bool, repays []N) []N {
+func applySign[N types.Number](isNegative bool, repays []N) []N {
 	if isNegative {
 		for index := range repays {
 			repays[index] = -repays[index]

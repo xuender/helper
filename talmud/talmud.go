@@ -12,12 +12,12 @@ import (
 //
 // Parameters:
 //   - total: the total amount available for distribution
-//   - debts: a variadic list of debt amounts to be repaid
+//   - debts: a list of debt amounts to be repaid
 //
 // Returns:
 //   - A slice of numbers representing the actual repayment amounts for each debt,
 //     corresponding to the order of the input debts
-func Talmud[N types.Number](total N, debts ...N) []N {
+func Talmud[N types.Number](total N, debts []N) []N {
 	length := len(debts)
 	if total == 0 {
 		return make([]N, length)

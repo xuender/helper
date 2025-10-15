@@ -7,23 +7,22 @@ import (
 )
 
 func ExampleTalmud() {
-	fmt.Println(talmud.Talmud(150))
-	fmt.Println(talmud.Talmud(0, 100, 200, 300))
-	fmt.Println(talmud.Talmud(150, 100, 200, 300))
-	fmt.Println(talmud.Talmud(200, 100, 200, 300))
-	fmt.Println(talmud.Talmud(300, 100, 200, 300))
-	fmt.Println(talmud.Talmud(600, 100, 200, 300))
-	fmt.Println(talmud.Talmud(1200, 300, 200, 100))
-	fmt.Println(talmud.Talmud(-1200, 300, 200, 100))
-	fmt.Println(talmud.Talmud(300, 100, 120, 200, 300))
-	fmt.Println(talmud.Talmud(-300, 100, 200, 300))
-	fmt.Println(talmud.Talmud(0, 100, 200, 300))
-	fmt.Println(talmud.Talmud(280, 100, 200))
-	fmt.Println(talmud.Talmud(350, 100, 120, 150, 200))
-	fmt.Println(talmud.Talmud(40, 100, 120, 150, 200))
-	fmt.Println(talmud.Talmud(280, 100))
-	fmt.Println(talmud.Talmud(280, 300))
-	fmt.Println(talmud.Talmud(-300, 100, 200, 300))
+	fmt.Println(talmud.Talmud(150, nil))
+	fmt.Println(talmud.Talmud(0, []int{100, 200, 300}))
+	fmt.Println(talmud.Talmud(150, []int{100, 200, 300}))
+	fmt.Println(talmud.Talmud(200, []int{100, 200, 300}))
+	fmt.Println(talmud.Talmud(300, []int{100, 200, 300}))
+	fmt.Println(talmud.Talmud(600, []int{100, 200, 300}))
+	fmt.Println(talmud.Talmud(1200, []int{300, 200, 100}))
+	fmt.Println(talmud.Talmud(-1200, []int{300, 200, 100}))
+	fmt.Println(talmud.Talmud(300, []int{100, 120, 200, 300}))
+	fmt.Println(talmud.Talmud(-300, []int{100, 200, 300}))
+	fmt.Println(talmud.Talmud(280, []int{100, 200}))
+	fmt.Println(talmud.Talmud(350, []int{100, 120, 150, 200}))
+	fmt.Println(talmud.Talmud(40, []int{100, 120, 150, 200}))
+	fmt.Println(talmud.Talmud(280, []int{100}))
+	fmt.Println(talmud.Talmud(280, []int{300}))
+	fmt.Println(talmud.Talmud(-300, []int{100, 200, 300}))
 
 	// OutPut:
 	// []
@@ -36,7 +35,6 @@ func ExampleTalmud() {
 	// [-300 -200 -100]
 	// [50 60 95 95]
 	// [-50 -100 -150]
-	// [0 0 0]
 	// [90 190]
 	// [50 60 95 145]
 	// [10 10 10 10]
@@ -48,7 +46,7 @@ func ExampleTalmud() {
 func ExampleTalmud_for() {
 	for num := range 14 {
 		total := num * 50
-		fmt.Println(total, talmud.Talmud(total, 100, 200, 300))
+		fmt.Println(total, talmud.Talmud(total, []int{100, 200, 300}))
 	}
 
 	// Output:

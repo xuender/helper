@@ -12,7 +12,7 @@ import (
 //
 // Parameters:
 //   - total: the total amount available for distribution
-//   - debts: a list of debt amounts to be repaid
+//   - debts: a slice of debt amounts to be repaid
 //
 // Returns:
 //   - A slice of numbers representing the actual repayment amounts for each debt,

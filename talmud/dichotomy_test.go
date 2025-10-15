@@ -24,6 +24,8 @@ func TestDichotomy(t *testing.T) {
 		{"case5", 120, 200, 100, 70, 50},
 		{"case6", 200, 100, 500, 50, 150},
 		{"case7", 150, 200, 300, 75, 75},
+		{"case8", -280, 100, 200, -90, -190},
+		{"case9", 0, 100, 200, 0, 0},
 	}
 	for _, testCase := range tests {
 		t.Run(testCase.name, func(t *testing.T) {

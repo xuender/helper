@@ -37,6 +37,7 @@ func ExampleTalmud_out() {
 	fmt.Println(talmud.Talmud(40, 100, 120, 150, 200))
 	fmt.Println(talmud.Talmud(280, 100))
 	fmt.Println(talmud.Talmud(280, 300))
+	fmt.Println(talmud.Talmud(-300, 100, 200, 300))
 
 	// OutPut:
 	// [90 190]
@@ -44,4 +45,5 @@ func ExampleTalmud_out() {
 	// [10 10 10 10]
 	// [100]
 	// [280]
+	// [-50 -100 -150]
 }

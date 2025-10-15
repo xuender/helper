@@ -18,11 +18,10 @@ import (
 //   - A slice of numbers representing the actual repayment amounts for each debt,
 //     corresponding to the order of the input debts
 func Talmud[N types.Number](total N, debts ...N) []N {
-	if total == 0 {
-		return make([]N, len(debts))
-	}
-
 	length := len(debts)
+	if total == 0 {
+		return make([]N, length)
+	}
 
 	switch length {
 	case 0:
@@ -35,7 +34,12 @@ func Talmud[N types.Number](total N, debts ...N) []N {
 		return []N{repay1, repay2}
 	}
 
-	sortedDebts := make([]debtWithIndex[N], len(debts))
+	isNegative := total < 0
+	if isNegative {
+		total = -total
+	}
+
+	sortedDebts := make([]debtWithIndex[N], length)
 	for index, debt := range debts {
 		sortedDebts[index] = debtWithIndex[N]{debt: debt, index: index}
 	}
@@ -47,13 +51,7 @@ func Talmud[N types.Number](total N, debts ...N) []N {
 	repays := make([]N, length)
 
 	if total <= sortedDebts[0].debt/2*N(length) {
-		each := total / N(length)
-
-		for i := range length {
-			repays[i] = each
-		}
-
-		return repays
+		return negative(isNegative, repayEach(total, length, repays))
 	}
 
 	for index := range length - 1 {
@@ -67,6 +65,26 @@ func Talmud[N types.Number](total N, debts ...N) []N {
 	}
 
 	repays[sortedDebts[length-1].index] = total
+
+	return negative(isNegative, repays)
+}
+
+func repayEach[N types.Number](total N, length int, repays []N) []N {
+	each := total / N(length)
+
+	for i := range length {
+		repays[i] = each
+	}
+
+	return repays
+}
+
+func negative[N types.Number](isNegative bool, repays []N) []N {
+	if isNegative {
+		for index := range repays {
+			repays[index] = -repays[index]
+		}
+	}
 
 	return repays
 }

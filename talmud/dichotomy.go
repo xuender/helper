@@ -15,12 +15,31 @@ import "github.com/xuender/helper/types"
 //   The second return value: Amount to be repaid for the second debt
 
 func Dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
+	if total == 0 {
+		return 0, 0
+	}
+
+	isNegative := total < 0
+	if isNegative {
+		total = -total
+	}
+
+	repay1, repay2 := dichotomy(total, debt1, debt2)
+
+	if isNegative {
+		return -repay1, -repay2
+	}
+
+	return repay1, repay2
+}
+
+func dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
 	if total >= debt1+debt2 {
 		return debt1, debt2
 	}
 
 	if debt1 > debt2 {
-		repay1, repay2 := Dichotomy(total, debt2, debt1)
+		repay1, repay2 := dichotomy(total, debt2, debt1)
 
 		return repay2, repay1
 	}
@@ -32,7 +51,7 @@ func Dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
 	}
 
 	repay := total - debt1
-	repay1, repay2 := Dichotomy(debt1, debt1, debt2-repay)
+	repay1, repay2 := dichotomy(debt1, debt1, debt2-repay)
 
 	return repay1, repay2 + repay
 }

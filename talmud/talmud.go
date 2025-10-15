@@ -7,47 +7,32 @@ import (
 	"github.com/xuender/helper/types"
 )
 
-func Talmud[N types.Number](total N, debts ...N) ([]N, N) {
+// Talmud implements the Talmudic algorithm for debt repayment distribution.
+// It distributes a total amount among multiple debts according to Talmudic principles.
+//
+// Parameters:
+//   - total: the total amount available for distribution
+//   - debts: a variadic list of debt amounts to be repaid
+//
+// Returns:
+//   - A slice of numbers representing the actual repayment amounts for each debt,
+//     corresponding to the order of the input debts
+func Talmud[N types.Number](total N, debts ...N) []N {
 	if total == 0 {
-		return make([]N, len(debts)), 0
+		return make([]N, len(debts))
 	}
 
-	if len(debts) == 0 {
-		return nil, total
-	}
+	length := len(debts)
 
-	isNegative := total < 0
-	if isNegative {
-		total = -total
-	}
+	switch length {
+	case 0:
+		return nil
+	case 1:
+		return []N{cont.Min([]N{debts[0], total})}
+	case _two:
+		repay1, repay2 := Dichotomy(total, debts[0], debts[1])
 
-	results, remaining := talmud(total, debts)
-
-	if isNegative {
-		for i := range results {
-			results[i] = -results[i]
-		}
-
-		if remaining != 0 {
-			remaining = -remaining
-		}
-	}
-
-	return results, remaining
-}
-
-func talmud[N types.Number](total N, debts []N) ([]N, N) {
-	sum := cont.Sum(debts)
-
-	var remaining N
-
-	for total > sum {
-		remaining += sum
-		total -= sum
-	}
-
-	if total == sum {
-		return debts, remaining
+		return []N{repay1, repay2}
 	}
 
 	sortedDebts := make([]debtWithIndex[N], len(debts))
@@ -59,53 +44,29 @@ func talmud[N types.Number](total N, debts []N) ([]N, N) {
 		return sortedDebts[i].debt < sortedDebts[j].debt
 	})
 
-	sortedResults := allocate(sortedDebts, total)
+	repays := make([]N, length)
 
-	results := make([]N, len(debts))
-	for i, s := range sortedDebts {
-		results[s.index] = sortedResults[i]
-	}
+	if total <= sortedDebts[0].debt/2*N(length) {
+		each := total / N(length)
 
-	return results, remaining
-}
-
-func allocate[N types.Number](sorted []debtWithIndex[N], remaining N) []N {
-	length := len(sorted)
-	if length == 1 {
-		return []N{min(sorted[0].debt, remaining)}
-	}
-
-	var two N = 2
-	// 计算分界点
-	firstDebt := sorted[0].debt
-	// 第一分界点：当前最小债权的一半乘以人数
-	eStar := firstDebt * N(length) / two
-
-	var results []N
-
-	if remaining <= eStar {
-		// 情况1：总金额低于第一分界点，所有人平分
-		each := remaining / N(length)
-		results = make([]N, length)
-
-		for index := range results {
-			results[index] = each
+		for i := range length {
+			repays[i] = each
 		}
 
-		return results
-	}
-	// 情况2：总金额高于第一分界点，递归处理
-	// 先给第一个人分配其债权的一半
-	firstShare := firstDebt / two
-	remainingAfterFirst := remaining - firstShare
-	// 剩余金额分配给其余n-1人
-	restResults := allocate(sorted[1:], remainingAfterFirst)
-	// 组合结果
-	results = append([]N{firstShare}, restResults...)
-	// 确保每个人的分配不超过其债权（递归过程中可能出现超额）
-	for i := range results {
-		results[i] = min(results[i], sorted[i].debt)
+		return repays
 	}
 
-	return results
+	for index := range length - 1 {
+		var other N
+
+		for _, debt := range sortedDebts[index+1:] {
+			other += debt.debt
+		}
+
+		repays[sortedDebts[index].index], total = Dichotomy(total, sortedDebts[index].debt, other)
+	}
+
+	repays[sortedDebts[length-1].index] = total
+
+	return repays
 }

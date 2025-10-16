@@ -4,7 +4,7 @@ import (
 	"iter"
 	"slices"
 
-	"github.com/xuender/helper/types"
+	"github.com/xuender/helper/gtype"
 )
 
 // Intersection returns a sequence that contains the intersection of multiple slices.
@@ -42,7 +42,7 @@ func Intersection[S ~[]E, E comparable](items ...S) iter.Seq[E] {
 }
 
 // IntersectionFunc returns a sequence that contains the intersection of multiple slices using equality function.
-func IntersectionFunc[S ~[]E, E any](equal types.Equaler[E], items ...S) iter.Seq[E] {
+func IntersectionFunc[S ~[]E, E any](equal gtype.Equaler[E], items ...S) iter.Seq[E] {
 	return func(yield func(E) bool) {
 		if len(items) == 0 {
 			return

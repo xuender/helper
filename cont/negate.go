@@ -1,6 +1,6 @@
 package cont
 
-import "github.com/xuender/helper/types"
+import "github.com/xuender/helper/gtype"
 
 // Negate inverts the sign of each numeric element in the slice
 //
@@ -13,7 +13,7 @@ import "github.com/xuender/helper/types"
 // Generic constraints:
 //   - S: must be a slice type with elements of type E
 //   - E: must be a numeric type (integer, float, etc.)
-func Negate[S ~[]E, E types.Number](items S) S {
+func Negate[S ~[]E, E gtype.Number](items S) S {
 	for index := range items {
 		items[index] = -items[index]
 	}

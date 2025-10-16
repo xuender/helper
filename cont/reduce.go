@@ -1,11 +1,11 @@
 package cont
 
-import "github.com/xuender/helper/types"
+import "github.com/xuender/helper/gtype"
 
 // Reduce applies a reducer function to all elements of a slice and returns a single value.
 // It iterates over the slice, applying the reducer to accumulate a result.
 // The first element initializes the accumulator.
-func Reduce[S ~[]E, E any](items S, reducer types.Reducer[E]) E {
+func Reduce[S ~[]E, E any](items S, reducer gtype.Reducer[E]) E {
 	var ret E
 
 	for idx, item := range items {

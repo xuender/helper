@@ -1,6 +1,6 @@
 package talmud
 
-import "github.com/xuender/helper/types"
+import "github.com/xuender/helper/gtype"
 
 // Dichotomy implements the Talmudic principle of debt repayment allocation using a binary search approach.
 // It fairly distributes a total payment amount between two debts according to Talmudic law.
@@ -13,7 +13,7 @@ import "github.com/xuender/helper/types"
 // Returns:
 //   - The first return value: Amount to be repaid for the first debt
 //   - The second return value: Amount to be repaid for the second debt
-func Dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
+func Dichotomy[N gtype.Number](total, debt1, debt2 N) (N, N) {
 	if total == 0 {
 		return 0, 0
 	}
@@ -32,7 +32,7 @@ func Dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
 	return repay1, repay2
 }
 
-func dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
+func dichotomy[N gtype.Number](total, debt1, debt2 N) (N, N) {
 	if total >= debt1+debt2 {
 		return debt1, debt2
 	}

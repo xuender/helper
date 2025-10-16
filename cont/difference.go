@@ -4,7 +4,7 @@ import (
 	"iter"
 	"slices"
 
-	"github.com/xuender/helper/types"
+	"github.com/xuender/helper/gtype"
 )
 
 // Difference returns a sequence that src slice which are not present in any of the provided slices.
@@ -27,7 +27,7 @@ func Difference[S ~[]E, E comparable](src S, items ...S) iter.Seq[E] {
 }
 
 // DifferenceFunc returns a sequence that src slice which are not present in any of the provided slices.
-func DifferenceFunc[S ~[]E, E any](equal types.Equaler[E], src S, items ...S) iter.Seq[E] {
+func DifferenceFunc[S ~[]E, E any](equal gtype.Equaler[E], src S, items ...S) iter.Seq[E] {
 	if len(items) == 0 {
 		return slices.Values(src)
 	}

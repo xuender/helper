@@ -1,4 +1,4 @@
-package types
+package gtype
 
 // Checker defines a function type that tests a value and returns a boolean.
 type Checker[T any] func(T) bool

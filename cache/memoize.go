@@ -3,11 +3,11 @@ package cache
 import (
 	"sync"
 
-	"github.com/xuender/helper/types"
+	"github.com/xuender/helper/gtype"
 )
 
 // Memoize creates a memoized version of a mapper function.
-func Memoize[K comparable, V any](mapper types.Mapper[K, V]) types.Mapper[K, V] {
+func Memoize[K comparable, V any](mapper gtype.Mapper[K, V]) gtype.Mapper[K, V] {
 	cache := map[K]V{}
 
 	return func(key K) V {
@@ -23,7 +23,7 @@ func Memoize[K comparable, V any](mapper types.Mapper[K, V]) types.Mapper[K, V] 
 }
 
 // MemoizeSafe creates a goroutine-safe memoized version of a mapper function.
-func MemoizeSafe[K comparable, V any](mapper types.Mapper[K, V]) types.Mapper[K, V] {
+func MemoizeSafe[K comparable, V any](mapper gtype.Mapper[K, V]) gtype.Mapper[K, V] {
 	cache := map[K]V{}
 	mutex := sync.RWMutex{}
 

@@ -4,7 +4,7 @@ import (
 	"sort"
 
 	"github.com/xuender/helper/cont"
-	"github.com/xuender/helper/types"
+	"github.com/xuender/helper/gtype"
 )
 
 // Talmud implements the Talmudic algorithm for debt repayment distribution.
@@ -19,7 +19,7 @@ import (
 //     corresponding to the order of the input debts
 //
 // nolint: nonamedreturns
-func Talmud[N types.Number](total N, debts []N) (repays []N) {
+func Talmud[N gtype.Number](total N, debts []N) (repays []N) {
 	length := len(debts)
 	if total == 0 {
 		return make([]N, length)
@@ -76,7 +76,7 @@ func Talmud[N types.Number](total N, debts []N) (repays []N) {
 	return repays
 }
 
-func repayEach[N types.Number](total N, length int, repays []N) {
+func repayEach[N gtype.Number](total N, length int, repays []N) {
 	each := total / N(length)
 
 	for i := range length {

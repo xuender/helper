@@ -6,7 +6,6 @@ disable = [
 'wsl',
   'bodyclose',
   'contextcheck',
-  'depguard',
   'exhaustruct',
   'gomoddirectives',
   'gosmopolitan',
@@ -53,3 +52,6 @@ paths = [
   'builtin$',
   'examples$'
 ]
+[linters.settings.depguard.rules.main]
+files=['$all','!$test']
+allow=['$gostd','github.com/xuender/helper']

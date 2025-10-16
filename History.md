@@ -33,7 +33,7 @@
 * feat: add Complement, Tap
 * feat: add Memoize, MemoizeSync
 * test: list
-* feat: add types
+* feat: add gtype
 * doc: codecov
 * chore: golangci v1.62
 * chore: github

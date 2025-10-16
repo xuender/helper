@@ -4,7 +4,7 @@ import (
 	"iter"
 	"slices"
 
-	"github.com/xuender/helper/types"
+	"github.com/xuender/helper/gtype"
 )
 
 // Union returns a sequence that contains the union of multiple slices.
@@ -34,7 +34,7 @@ func Union[S ~[]E, E comparable](items ...S) iter.Seq[E] {
 }
 
 // UnionFunc returns a sequence that contains the union of multiple slices using a custom equality function.
-func UnionFunc[S ~[]E, E any](equal types.Equaler[E], items ...S) iter.Seq[E] {
+func UnionFunc[S ~[]E, E any](equal gtype.Equaler[E], items ...S) iter.Seq[E] {
 	return func(yield func(E) bool) {
 		if len(items) == 0 {
 			return

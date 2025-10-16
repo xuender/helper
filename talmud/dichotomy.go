@@ -39,19 +39,19 @@ func dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
 	}
 
 	if debt1 > debt2 {
-		repay1, repay2 := dichotomy(total, debt2, debt1)
+		repay2, repay1 := dichotomy(total, debt2, debt1)
 
-		return repay2, repay1
+		return repay1, repay2
 	}
 
 	if total <= debt1 || debt1 == debt2 {
-		haft := total / _two
+		half := total / _two
 
-		return haft, haft
+		return half, half
 	}
 
-	repay := total - debt1
-	repay1, repay2 := dichotomy(debt1, debt1, debt2-repay)
+	uncontested := total - debt1
+	repay1, repay2 := dichotomy(debt1, debt1, debt2-uncontested)
 
-	return repay1, repay2 + repay
+	return repay1, repay2 + uncontested
 }

@@ -54,14 +54,14 @@ func Talmud[N types.Number](total N, debts []N) []N {
 		return applySign(isNegative, repayEach(total, length, repays))
 	}
 
-	for index := range length - 1 {
-		var other N
+	for index, current := range sortedDebts[:length-1] {
+		var totalOther N
 
 		for _, debt := range sortedDebts[index+1:] {
-			other += debt.debt
+			totalOther += debt.debt
 		}
 
-		repays[sortedDebts[index].index], total = Dichotomy(total, sortedDebts[index].debt, other)
+		repays[current.index], total = Dichotomy(total, current.debt, totalOther)
 	}
 
 	repays[sortedDebts[length-1].index] = total

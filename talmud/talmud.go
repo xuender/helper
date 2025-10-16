@@ -56,7 +56,7 @@ func Talmud[N gtype.Number](total N, debts []N) (repays []N) {
 	})
 
 	if total <= sortedDebts[0].debt*N(length)/_two {
-		repayEach(total, length, repays)
+		equalDivision(total, length, repays)
 
 		return repays
 	}
@@ -76,7 +76,7 @@ func Talmud[N gtype.Number](total N, debts []N) (repays []N) {
 	return repays
 }
 
-func repayEach[N gtype.Number](total N, length int, repays []N) {
+func equalDivision[N gtype.Number](total N, length int, repays []N) {
 	each := total / N(length)
 
 	for i := range length {

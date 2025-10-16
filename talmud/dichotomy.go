@@ -37,10 +37,9 @@ func dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
 		return debt1, debt2
 	}
 
-	if debt1 > debt2 {
-		repay2, repay1 := dichotomy(total, debt2, debt1)
-
-		return repay1, repay2
+	swapped := debt1 > debt2
+	if swapped {
+		debt1, debt2 = debt2, debt1
 	}
 
 	if total <= debt1 || debt1 == debt2 {
@@ -51,6 +50,10 @@ func dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
 
 	uncontested := total - debt1
 	repay1, repay2 := dichotomy(debt1, debt1, debt2-uncontested)
+
+	if swapped {
+		return repay2 + uncontested, repay1
+	}
 
 	return repay1, repay2 + uncontested
 }

@@ -50,7 +50,7 @@ func Talmud[N types.Number](total N, debts []N) []N {
 
 	repays := make([]N, length)
 
-	if total <= sortedDebts[0].debt/2*N(length) {
+	if total <= sortedDebts[0].debt*N(length)/_two {
 		return applySign(isNegative, repayEach(total, length, repays))
 	}
 

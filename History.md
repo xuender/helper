@@ -1,4 +1,33 @@
 
+1.0.3 / 2025-10-16
+==================
+
+* refactor: types rename to gtype
+* test: Example Negate
+* feat: add cont.Negate
+* refactor: reduce recursion
+* doc: Dichotomy
+* refactor: rename
+* refactor: rename
+* doc: Talmud
+* refactor: Talmud
+* test: Example Talmud
+* test: Talmud for
+* feat: Talmud negative
+* feat: add Talmud
+* feat: add Talmud
+* fix: close chan
+* test: Clone
+* feat: add cont.Set Equal
+* feat: add seq.Clone
+* refactor: cache
+* fix: seq.Cache close
+* feat: add seq.Range, seq.Cache
+* feat: add seq.Chan
+* refactor: for use slice
+* feat: add times.NewParse
+* feat: add cont.Find
+
 1.0.2 / 2025-01-09
 ==================
 

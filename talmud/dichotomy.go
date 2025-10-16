@@ -6,14 +6,13 @@ import "github.com/xuender/helper/types"
 // It fairly distributes a total payment amount between two debts according to Talmudic law.
 //
 // Parameters:
-//   total: The total amount available for debt repayment
-//   debt1: The amount of the first debt
-//   debt2: The amount of the second debt
+//   - total: The total amount available for debt repayment
+//   - debt1: The amount of the first debt
+//   - debt2: The amount of the second debt
 //
 // Returns:
-//   The first return value: Amount to be repaid for the first debt
-//   The second return value: Amount to be repaid for the second debt
-
+//   - The first return value: Amount to be repaid for the first debt
+//   - The second return value: Amount to be repaid for the second debt
 func Dichotomy[N types.Number](total, debt1, debt2 N) (N, N) {
 	if total == 0 {
 		return 0, 0

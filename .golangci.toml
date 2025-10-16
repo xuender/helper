@@ -16,7 +16,6 @@ disable = [
   'rowserrcheck',
   'sqlclosecheck',
   'staticcheck',
-  'tparallel',
   'unparam',
   'unused',
   'wastedassign',
